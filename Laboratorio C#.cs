@@ -7,8 +7,7 @@ namespace Impuestos
     {
         static void Main(string[] args)
         {
-        
-            string rutaArchivo = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\laboratorio.txt";
+            string rutaArchivo = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Laboratorio.txt";
 
             if (!File.Exists(rutaArchivo))
             {
@@ -27,7 +26,6 @@ namespace Impuestos
 
             foreach (string linea in lineas)
             {
-
                 string[] campos = linea.Split(';');
 
                 // Extraer datos relevantes
@@ -42,7 +40,7 @@ namespace Impuestos
                     facturasPagadasEnero++;
                 }
 
-                
+                // Contabilizar el total de facturas pagadas
                 if (pagada.Equals("SI"))
                 {
                     totalFacturasPagadas++;
@@ -52,7 +50,7 @@ namespace Impuestos
                     totalFacturasNoPagadas++;
                 }
 
-                // Verifico facturas pagadas del 1 y 2 semestre
+                // Verificar facturas pagadas del primer y segundo semestre
                 if (pagada.Equals("SI"))
                 {
                     switch (mesFactura)
@@ -77,17 +75,13 @@ namespace Impuestos
                 }
             }
 
-            // Muestro los  resultados
             Console.WriteLine();
             Console.WriteLine($"Total de Facturas Pagadas en Enero: {facturasPagadasEnero}");
-
-            // Total de Facturas Pagadas
-            int totalFacturasPagadasFinal = totalFacturasPagadas + facturasPagadasEnero;
-            Console.WriteLine($"Total de Facturas Pagadas: {totalFacturasPagadasFinal}");
-
+            Console.WriteLine($"Total de Facturas Pagadas: {totalFacturasPagadas}");
             Console.WriteLine($"Total de Facturas NO Pagadas: {totalFacturasNoPagadas}");
             Console.WriteLine($"Facturas Pagadas en el Primer Semestre: {facturasPagadasPrimerSemestre}");
             Console.WriteLine($"Facturas Pagadas en el Segundo Semestre: {facturasPagadasSegundoSemestre}");
         }
     }
+}
 }
